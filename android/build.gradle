@@ -38,11 +38,7 @@ android {
         disable 'InvalidPackage'
     }
 
-    sourceSets{
-        main{
-            assets. srcDirs = ['assets']
-        }
-    }
+    
 
 }
 

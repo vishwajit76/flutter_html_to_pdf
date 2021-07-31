@@ -32,15 +32,6 @@ class HtmlToPdfConverter {
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                
-                
-                 if (Build.VERSION.SDK_INT < 19) {
-                    view.loadUrl("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);");
-                } else {
-                    view.evaluateJavascript("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);", null);
-                }
-                
-                
                 createPdfFromWebView(webView, activity, callback)
             }
         }

@@ -20,6 +20,8 @@ class HtmlToPdfConverter {
     fun convert(filePath: String, activity: Activity, callback: Callback) {
         val webView = WebView(activity.applicationContext)
         val htmlContent = File(filePath).readText(Charsets.UTF_8)
+        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setAllowFileAccess(true);
@@ -29,6 +31,15 @@ class HtmlToPdfConverter {
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
+                
+                
+                 if (Build.VERSION.SDK_INT < 19) {
+                    view.loadUrl("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);");
+                } else {
+                    view.evaluateJavascript("javascript:MathJax.Hub.Queue(['Typeset',MathJax.Hub]);", null);
+                }
+                
+                
                 createPdfFromWebView(webView, activity, callback)
             }
         }

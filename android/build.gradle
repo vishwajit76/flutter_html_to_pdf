@@ -37,6 +37,13 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+
+    sourceSets{
+        main{
+            assets. srcDirs = ['assets']
+        }
+    }
+
 }
 
 dependencies {

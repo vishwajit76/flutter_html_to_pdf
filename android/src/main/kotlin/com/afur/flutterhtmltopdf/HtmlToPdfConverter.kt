@@ -6,6 +6,7 @@ import android.print.PdfPrinter
 import android.print.PrintAttributes
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.webkit.WebSettings
 
 import java.io.File
 
@@ -20,7 +21,7 @@ class HtmlToPdfConverter {
     fun convert(filePath: String, activity: Activity, callback: Callback) {
         val webView = WebView(activity.applicationContext)
         val htmlContent = File(filePath).readText(Charsets.UTF_8)
-        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);

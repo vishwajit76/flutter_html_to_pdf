@@ -9,8 +9,6 @@ import android.webkit.WebViewClient
 import android.webkit.WebSettings
 import java.io.*
 
-import java.io.File
-
 
 class HtmlToPdfConverter {
 

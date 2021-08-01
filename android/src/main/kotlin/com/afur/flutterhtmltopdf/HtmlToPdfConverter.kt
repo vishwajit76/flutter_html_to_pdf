@@ -50,7 +50,7 @@ class HtmlToPdfConverter {
     
         
         //webView.loadDataWithBaseURL(null, htmlContent, "text/HTML", "UTF-8", null)
-        webView.loadUrl(file:///android_asset/index.html)
+        webView.loadUrl("file:///android_asset/index.html")
 
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {

@@ -25,8 +25,12 @@ class HtmlToPdfConverter {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        
 
         webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setAppCacheMaxSize(1024*1024*8);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -44,11 +48,14 @@ class HtmlToPdfConverter {
        
 
     
-        webView.getSettings().setAllowFileAccess(true);
-        webView.loadDataWithBaseURL(null, htmlContent, "text/HTML", "UTF-8", null)
+        
+        //webView.loadDataWithBaseURL(null, htmlContent, "text/HTML", "UTF-8", null)
+        webView.loadUrl(file:///android_asset/index.html)
+
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
+                view.loadUrl("javascript:replace('"+htmlContent+"')");
                 createPdfFromWebView(webView, activity, callback)
             }
         }

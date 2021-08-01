@@ -60,7 +60,8 @@ class HtmlToPdfConverter {
                 // Page loading started
                 // Do something
                 // textview.setText("Page Loading Started ...")
-                view.loadUrl("javascript:replace('"+htmlContent+"');");
+                //view.loadUrl("javascript:replace('"+htmlContent+"');");
+                view.loadUrl("javascript:document.body.innerHTML = '"+ htmlContent +"';");
                 super.onPageStarted(view, url,favicon)
             }
 

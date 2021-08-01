@@ -30,11 +30,11 @@ class HtmlToPdfConverter {
         webView.getSettings().setDomStorageEnabled(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webview.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        webview.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); 
+        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); 
 
 
         File cacheDir = getContext().getCacheDir();

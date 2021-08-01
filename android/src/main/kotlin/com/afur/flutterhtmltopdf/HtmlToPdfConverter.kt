@@ -53,9 +53,20 @@ class HtmlToPdfConverter {
         webView.loadUrl("file:///android_asset/index.html")
 
         webView.webViewClient = object : WebViewClient() {
+
+
+            override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
+                // Page loading started
+                // Do something
+                // textview.setText("Page Loading Started ...")
+                view.loadUrl("javascript:replace('"+htmlContent+"');");
+                super.onPageStarted(view, url,favicon)
+            }
+
+
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                view.loadUrl("javascript:replace('"+htmlContent+"');");
+                //view.loadUrl("javascript:replace('"+htmlContent+"');");
                 createPdfFromWebView(webView, activity, callback)
             }
         }

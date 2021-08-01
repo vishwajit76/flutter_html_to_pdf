@@ -36,15 +36,12 @@ class HtmlToPdfConverter {
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); 
 
 
-        File cacheDir = activity.getCacheDir();
-
-         if (cacheDir != null) {
-            String appCachePath = cacheDir.getAbsolutePath();
-            webView.getSettings().setDatabaseEnabled(true);
-            webView.getSettings().setAppCacheEnabled(true);
-            webView.getSettings().setDatabasePath(appCachePath);
-            webView.getSettings().setAppCachePath(appCachePath);
-        }
+       
+        webView.getSettings().setDatabaseEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setDatabasePath(activity.getFilesDir().getAbsolutePath() + "/cache");
+        webView.getSettings().setAppCachePath(activity.getFilesDir().getAbsolutePath() + "/databases");
+       
 
     
         webView.getSettings().setAllowFileAccess(true);

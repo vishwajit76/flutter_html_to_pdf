@@ -36,7 +36,7 @@ class HtmlToPdfConverter {
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); 
 
 
-        File cacheDir = getContext().getCacheDir();
+        File cacheDir = activity.getCacheDir();
 
          if (cacheDir != null) {
             String appCachePath = cacheDir.getAbsolutePath();

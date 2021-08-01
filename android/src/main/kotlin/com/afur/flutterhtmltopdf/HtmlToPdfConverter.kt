@@ -55,7 +55,7 @@ class HtmlToPdfConverter {
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                view.loadUrl("javascript:replace('"+htmlContent+"')");
+                view.loadUrl("javascript:replace('"+htmlContent+"');");
                 createPdfFromWebView(webView, activity, callback)
             }
         }

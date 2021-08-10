@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+</head>
+
+<body>
+
+<div id="content">
+
+
+</div>
+
+<script type="text/javascript">
+
+
+
+
+window.MathJax = {
+    //loader: {load: ['ui/lazy']},
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  },
+
+  startup: {
+    ready: () => {
+      console.log('MathJax is loaded, but not yet initialized');
+      MathJax.startup.defaultReady();
+      console.log('MathJax is initialized, and the initial typeset is queued');
+
+      MathJax.startup.promise.then(() => {
+        console.log('ready - MathJax initial typesetting complete');
+        //JSBridge.showMessageInNative("true");
+        console.log("load-done");
+      });
+    },
+
+    pageReady: () => {
+      return MathJax.startup.defaultPageReady().then(() => {
+        console.log('pageReady - MathJax initial typesetting complete');
+      });
+    }
+
+  }
+
+};
+
+
+
+
+
+        function replace(newContent)
+        {
+            document.getElementById("content").innerHTML = String.raw`${newContent}`;
+            startRender();
+
+        }
+
+        function startRender(){
+                 var script = document.createElement('script');
+                 script.src = 'file:///android_asset/MathJax/tex-mml-chtml.js';
+                 document.head.appendChild(script);
+        }
+
+    </script>
+
+</body>
+
+</html>
